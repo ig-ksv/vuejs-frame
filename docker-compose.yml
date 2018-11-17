@@ -1,0 +1,16 @@
+version: '3.5'
+services:
+  # Node.js web server
+  web:
+    build:
+      context: .
+      dockerfile: docker/web/Dockerfile
+    hostname: web
+    volumes:
+      - .:/var/app
+      - node_modules:/var/app/node_modules
+      - ~/.ssh/:/root/.ssh/
+    ports:
+      - "8080:8080"
+volumes:
+  node_modules:
